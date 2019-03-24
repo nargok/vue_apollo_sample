@@ -1,5 +1,5 @@
 <template>
-  <ApolloQuery query="query">
+  <ApolloQuery :query="query">
     <template slot-scope="{ result: { loading, error, data }}">
       <span v-if="loading">Loading...</span>
       <span v-else-if="error">An error occured</span>
