@@ -8,11 +8,10 @@
       <span v-else-if="error">An error occured {{error.message}}}</span>
       <section v-else-if="data">
         <h2>表示数を変更する</h2>
-        <div>
-          <input type="number" class="per_page" v-model="input_per_page"/>
-          <button @click="changeDisplayNumberOfItems">表示</button>
-        </div>
-        <hr>
+        <PageForm
+          v-bind:numberOfItem="tag_per_page"
+          v-on:changePageOfItem="changeDisplayNumberOfItems"
+        />
         <ul v-for="item in data.allTags" class="tag-list">
           <li class="tag-item">{{item.name}}</li>
         </ul>
@@ -23,20 +22,21 @@
 </template>
 
 <script>
+  import PageForm from './PageForm';
   import { GET_ALL_TAGS } from '../query';
 
   export default {
     name: "Apollo",
+    components: {PageForm},
     data() {
       return {
         query: GET_ALL_TAGS,
         tag_per_page: 15,
-        input_per_page: 0,
       };
     },
     methods: {
-      changeDisplayNumberOfItems() {
-        this.tag_per_page = parseInt(this.input_per_page);
+      changeDisplayNumberOfItems(inputPerPage) {
+        this.tag_per_page = inputPerPage;
       },
     }
   }
