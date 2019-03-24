@@ -1,5 +1,8 @@
 <template>
-  <ApolloQuery :query="query">
+  <ApolloQuery
+    :query="query"
+    :variables="{page: tag_per_page}"
+  >
     <template slot-scope="{ result: { loading, error, data }}">
       <span v-if="loading">Loading...</span>
       <span v-else-if="error">An error occured</span>
@@ -21,7 +24,8 @@
     name: "Apollo",
     data() {
       return {
-       query: GET_ALL_TAGS
+        query: GET_ALL_TAGS,
+        tag_per_page: 15
       };
     },
   }
