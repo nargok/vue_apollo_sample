@@ -9,4 +9,14 @@ const GET_ALL_TAGS = gql`
 }
 `;
 
-export { GET_ALL_TAGS };
+const CREATE_TAG = gql`
+  mutation createTag($isPublished: Boolean, $name: String) {
+    createTag(isPublished: $isPublished, name: $name) {
+      id
+      name
+      createdAt
+    }
+  }
+`;
+
+export { GET_ALL_TAGS, CREATE_TAG };
