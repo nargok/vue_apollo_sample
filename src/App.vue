@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
     <Apollo />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Apollo from "./components/Apollo";
 
 export default {
   name: 'app',
   components: {
     Apollo,
-    HelloWorld
   }
 }
 </script>

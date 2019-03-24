@@ -1,20 +1,27 @@
 <template>
-    <div>My Apollo Component</div>
+  <ApolloQuery query="query">
+    <template slot-scopo="{ result: { loading, error, data }}">
+      <span v-if="loading">Loading...</span>
+      <span v-else-if="error">An error occured</span>
+      <section v-else-if="data">
+        <div>My Apollo Component</div>
+        <div>{{data.allTags}}</div>
+
+      </section>
+      <span v-else>No result</span>
+    </template>
+  </ApolloQuery>
 </template>
 
 <script>
-  import gql from 'graphql-tag';
+  import { GET_ALL_TAGS } from '../query';
 
   export default {
-    apollo: {
-      // Simple query that will update the 'hello' vue property
-      allTask: gql`
-      {
-        allTags(first: 10) {
-        id
-        name
-        }
-      }`,
+    name: "Apollo",
+    data() {
+      return {
+       query: GET_ALL_TAGS
+      };
     },
   }
 </script>
