@@ -1,6 +1,6 @@
 <template>
   <ApolloQuery query="query">
-    <template slot-scopo="{ result: { loading, error, data }}">
+    <template slot-scope="{ result: { loading, error, data }}">
       <span v-if="loading">Loading...</span>
       <span v-else-if="error">An error occured</span>
       <section v-else-if="data">
