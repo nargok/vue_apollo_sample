@@ -12,7 +12,7 @@
           v-bind:numberOfItem="tag_per_page"
           v-on:changePageOfItem="changeDisplayNumberOfItems"
         />
-        <ul v-for="item in data.allTags" class="tag-list">
+        <ul v-bind:key="key" v-for="(item, key) in data.allTags" class="tag-list">
           <li class="tag-item">{{item.name}}</li>
         </ul>
       </section>
